@@ -1,6 +1,6 @@
 {
-  "name": "prochain",
-  "version": "1.0.0",
+  "name": "@shigma/prochain",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Shigma <1700011071@pku.edu.cn>",
@@ -8,6 +8,21 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koishijs/koishi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koishijs/koishi/issues"
+  },
+  "keywords": [
+    "proxy",
+    "promise",
+    "chain"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Shigma"
+  },
   "scripts": {
     "build": "tsc -b",
     "test": "mocha -r esbuild-register -r tsconfig-paths/register test/index.spec.ts",
