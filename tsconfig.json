@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "commonjs",
+    "declaration": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strictBindCallApply": true
+  },
+  "include": [
+    "src"
+  ]
+}
