@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "dist",
     "target": "esnext",
     "module": "commonjs",
@@ -7,7 +8,10 @@
     "incremental": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "strictBindCallApply": true
+    "strictBindCallApply": true,
+    "paths": {
+      "prochain": ["src"]
+    }
   },
   "include": [
     "src"

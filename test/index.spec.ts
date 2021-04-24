@@ -1,17 +1,25 @@
-import { wrap } from '..'
+import { expect } from 'chai'
+import { wrap } from 'prochain'
+import 'chai-as-promised'
+
+let output = ''
 
 class A {
+  /** sync method */
   foo() {
-    console.log('foo')
+    output += '1'
     return this
   }
 
+  /** async method */
   async bar() {
-    console.log('bar')
+    output += '2'
     return this
   }
 }
 
-const a = wrap(new A())
-
-a.foo().bar().foo().bar().bar()
+it('basic support', async () => {
+  const a = wrap(new A())
+  await a.foo().bar().foo().bar().bar()
+  expect(output).to.equal('12122')
+})

@@ -10,7 +10,10 @@
   ],
   "scripts": {
     "build": "tsc -b",
-    "test": "mocha -r esbuild-register test/index.spec.ts"
+    "test": "mocha -r esbuild-register -r tsconfig-paths/register test/index.spec.ts",
+    "test:json": "c8 -r json yarn test",
+    "test:html": "rimraf coverage && c8 -r html yarn test",
+    "test:text": "c8 -r text yarn test"
   },
   "devDependencies": {
     "@types/chai": "^4.2.16",
@@ -21,6 +24,9 @@
     "chai-as-promised": "^7.1.1",
     "esbuild-register": "^2.5.0",
     "mocha": "^8.3.2",
+    "prochain": "link:.",
+    "rimraf": "^3.0.2",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.4"
   }
 }
