@@ -18,3 +18,44 @@ export function wrap<T>(target: T): Wrap<T> {
     },
   })
 }
+
+type WrapDecAttrName = 'stream'
+
+type WrapT<
+  T extends Function,
+  S extends string = WrapDecAttrName
+> = T & {
+  [K in S]: Wrap<T>
+}
+
+type WrapDec = {
+  <T extends Function>(
+    target: T
+  ): T
+
+  <S extends string = WrapDecAttrName>(
+    target: S
+  ): <T extends Function>(target: T) => WrapT<T>
+}
+
+export const wrapDec: WrapDec = (target) => {
+  const returnDec = <
+    T extends { new (...args: any[]): {} }
+  >(constructor: T) => {
+    return class extends constructor {
+      constructor(...args: any) {
+        super(...args)
+        if (typeof target !== 'string') {
+          target = 'stream'
+        }
+        this[target] = wrap(this)
+      }
+    }
+  }
+
+  if (typeof target === 'string') {
+    return returnDec
+  } else {
+    return returnDec(target)
+  }
+}
