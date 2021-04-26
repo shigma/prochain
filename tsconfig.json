@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "strictBindCallApply": true,
+    "experimentalDecorators": true,
     "paths": {
       "prochain": ["src"]
     }
